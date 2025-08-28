@@ -17,13 +17,6 @@ const Header = () => {
               className="h-8 w-auto"
             />
           </div>
-          <Typography
-            variant="h6"
-            component="div"
-            className="text-white font-semibold hidden sm:block"
-          >
-            QuickPanel
-          </Typography>
         </Box>
       </Toolbar>
     </AppBar>

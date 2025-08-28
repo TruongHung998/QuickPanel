@@ -1,9 +1,12 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+
 import FileLogList from "./components/FileLogList";
+import FileLogDetail from "./components/FileLogDetail";
 import Header from "./components/Header";
 import { Container, Box, Typography } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -37,18 +40,23 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box className="min-h-screen bg-gray-50">
-        <Header />
-        <Container maxWidth="lg" className="py-8">
-          <Typography
-            variant="h1"
-            className="text-center mb-8 text-3xl md:text-4xl font-bold text-gray-800"
-          >
-            File Log Manager
-          </Typography>
-          <FileLogList />
-        </Container>
-      </Box>
+      <Router>
+        <Box className="min-h-screen bg-gray-50">
+          <Header />
+          <Container maxWidth="lg" className="py-8">
+            <Typography
+              variant="h1"
+              className="text-center mb-8 text-3xl md:text-4xl font-bold text-gray-800"
+            >
+              Innova Log Manager
+            </Typography>
+            <Routes>
+              <Route path="/" element={<FileLogList />} />
+              <Route path=":feature" element={<FileLogDetail />} />
+            </Routes>
+          </Container>
+        </Box>
+      </Router>
     </ThemeProvider>
   );
 }
