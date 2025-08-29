@@ -24,6 +24,7 @@ import BuildIcon from "@mui/icons-material/Build";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import DataUsageIcon from "@mui/icons-material/DataUsage";
 import DescriptionIcon from "@mui/icons-material/Description";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 const FileLogList = () => {
   const navigate = useNavigate();
@@ -74,6 +75,11 @@ const FileLogList = () => {
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
     setPage(1); // Reset to first page when changing filter
+  };
+
+  const handleRefresh = () => {
+    setPage(1);
+    fetchFiles();
   };
 
   const handleDownload = (fileName) => {
@@ -156,6 +162,15 @@ const FileLogList = () => {
           className="mx-1"
         >
           Cartek2
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={handleRefresh}
+          startIcon={<RefreshIcon />}
+          className="mx-1"
+          disabled={loading}
+        >
+          Refresh
         </Button>
       </div>
 
